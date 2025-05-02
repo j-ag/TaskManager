@@ -1,0 +1,19 @@
+﻿@using TaskService
+@using MudBlazor
+@inject ISnackbar Snackbar
+
+<h3>From TaskManagerComponent</h3>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var todos = await TaskService.GetToDos();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add(ex.Message, Severity.Error);
+        }
+    }
+}
