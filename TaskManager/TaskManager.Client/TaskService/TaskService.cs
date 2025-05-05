@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using System.Net.Http.Json;
-using ToDoData;
+using TaskManager.Client.DTOs;
 
 namespace TaskManager.Client.TaskService
 {
