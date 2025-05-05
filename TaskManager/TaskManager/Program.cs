@@ -1,16 +1,21 @@
 using TaskManager.Client.Pages;
 using TaskManager.Components;
 using MudBlazor.Services;
+using ToDoData.Models;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddRazorComponents()
+    .AddInteractiveWebAssemblyComponents();
 
 builder.Services.AddControllers();
 
 builder.Services.AddMudServices();
 
-// Add services to the container.
-builder.Services.AddRazorComponents()
-    .AddInteractiveWebAssemblyComponents();
+builder.Services.AddDbContext<ToDoDBContext>(options =>
+    options.UseSqlite("Data Source=TaskDB.db"));
 
 var app = builder.Build();
 
