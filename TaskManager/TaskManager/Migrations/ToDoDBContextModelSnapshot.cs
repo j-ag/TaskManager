@@ -3,7 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ToDoData.Models;
+using Models;
 
 #nullable disable
 
@@ -17,7 +17,7 @@ namespace TaskManager.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.4");
 
-            modelBuilder.Entity("ToDoData.Models.ToDo", b =>
+            modelBuilder.Entity("Models.ToDos", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -35,7 +35,7 @@ namespace TaskManager.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ToDo");
+                    b.ToTable("ToDos");
                 });
 #pragma warning restore 612, 618
         }

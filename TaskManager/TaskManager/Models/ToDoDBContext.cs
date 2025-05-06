@@ -6,16 +6,15 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using Microsoft.EntityFrameworkCore;
 
-namespace ToDoData.Models
+namespace Models
 {
     public class ToDoDBContext : DbContext
     {
         public ToDoDBContext(DbContextOptions<ToDoDBContext> options) : base(options) 
         {
-            //var optionsBuilder = new DbContextOptionsBuilder<ToDoDBContext>();
-            //optionsBuilder.UseSqlite("Data Source=TaskDB.db");
+            
         }
 
-        public DbSet<ToDo> ToDo { get; set; }
+        public DbSet<ToDos> ToDos { get; set; }
     }
 }

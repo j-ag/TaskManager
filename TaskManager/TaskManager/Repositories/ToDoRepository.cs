@@ -1,5 +1,5 @@
 ﻿using TaskManager.Repositories.Interfaces;
-using ToDoData.Models;
+using Models;
 
 namespace TaskManager.Repositories
 {
@@ -12,9 +12,9 @@ namespace TaskManager.Repositories
             _dbContext = dbContext;
         }
 
-        public IEnumerable<ToDo> GetToDos()
+        public IEnumerable<ToDos> GetToDos()
         {
-            return _dbContext.ToDo.ToList();
+            return _dbContext.ToDos.ToList();
         }
 
         private bool disposed = false;

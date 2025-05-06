@@ -11,8 +11,8 @@ using Models;
 namespace TaskManager.Migrations
 {
     [DbContext(typeof(ToDoDBContext))]
-    [Migration("20250505185346_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20250506032738_ToDoModelNameChange")]
+    partial class ToDoModelNameChange
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,7 +20,7 @@ namespace TaskManager.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.4");
 
-            modelBuilder.Entity("ToDoData.Models.ToDo", b =>
+            modelBuilder.Entity("Models.ToDos", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -38,7 +38,7 @@ namespace TaskManager.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ToDo");
+                    b.ToTable("ToDos");
                 });
 #pragma warning restore 612, 618
         }

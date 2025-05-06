@@ -1,9 +1,9 @@
-﻿using ToDoData.Models;
+﻿using Models;
 
 namespace TaskManager.Repositories.Interfaces
 {
     public interface IToDoRepository
     {
-        IEnumerable<ToDo> GetToDos();
+        IEnumerable<ToDos> GetToDos();
     }
 }

@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
-namespace ToDoData.Models
+namespace Models
 {
-    public class ToDo
+    public class ToDos
     {
         public int Id { get;set; }
 

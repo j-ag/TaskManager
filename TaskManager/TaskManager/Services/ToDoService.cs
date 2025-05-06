@@ -1,6 +1,6 @@
 ﻿using TaskManager.Repositories.Interfaces;
 using TaskManager.Services.Interfaces;
-using ToDoData.Models;
+using Models;
 
 namespace TaskManager.Services
 {
@@ -13,7 +13,7 @@ namespace TaskManager.Services
             _toDoRepository = toDoRepository;
         }
 
-        public IEnumerable<ToDo> Get()
+        public IEnumerable<ToDos> Get()
         {
             return _toDoRepository.GetToDos();
         }

@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections;
-using System.Net;
 using TaskManager.Client.DTOs;
-using TaskManager.Services;
 using TaskManager.Services.Interfaces;
+using AutoMapper;
 
 namespace TaskManager.Controller
 {
@@ -12,22 +10,22 @@ namespace TaskManager.Controller
     public class ToDoController : ControllerBase
     {
         private readonly IToDoService _toDoService;
+        private readonly IMapper _mapper;
 
-        public ToDoController(IToDoService toDoService)
+        public ToDoController(IToDoService toDoService, IMapper mapper)
         { 
             _toDoService = toDoService;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public IEnumerable<ToDo> GetToDoItems()
         {
-            var toDoItems = _toDoService.Get();
+            var toDoItems = _toDoService.Get().ToList();
 
-            // perform DTO mapping here. Use AUTOMAPPER. we want to return the DTO to client side.
+            List<ToDo> toDoDtoItems = _mapper.Map<List<ToDo>>(toDoItems);
 
-            return new List<ToDo>();
-
-            //return toDoItems;
+            return toDoDtoItems;
         }
     }
 }

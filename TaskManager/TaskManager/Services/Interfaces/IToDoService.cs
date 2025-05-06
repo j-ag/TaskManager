@@ -1,10 +1,10 @@
-﻿using ToDoData.Models;
+﻿using Models;
 
 namespace TaskManager.Services.Interfaces
 {
     public interface IToDoService
     {
 
-        IEnumerable<ToDo> Get();
+        IEnumerable<ToDos> Get();
     }
 }

@@ -1,13 +1,13 @@
-using TaskManager.Client.Pages;
 using TaskManager.Components;
 using MudBlazor.Services;
-using ToDoData.Models;
+using Models;
 using Microsoft.EntityFrameworkCore;
 using MudBlazor;
 using TaskManager.Services.Interfaces;
 using TaskManager.Services;
 using TaskManager.Repositories;
 using TaskManager.Repositories.Interfaces;
+using TaskManager.Mappings;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,9 +15,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
 
-// TODO: Test if injection is working.
 builder.Services.AddScoped<IToDoRepository, ToDoRepository>();
 builder.Services.AddScoped<IToDoService, ToDoService>();
+
+builder.Services.AddAutoMapper(typeof(AutoMappingProfile));
 
 builder.Services.AddControllers();
 
