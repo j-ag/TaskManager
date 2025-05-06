@@ -1,19 +1,41 @@
-﻿@using TaskService
+﻿@using TaskManager.Client.DTOs
+@using TaskService
 @using MudBlazor
 @inject ISnackbar Snackbar
 
-<h3>From TaskManagerComponent</h3>
+@foreach(var item in toDoItems)
+{ 
+    <MudPaper Outlined Class="border-dashed">
+        <MudStack StretchItems="@stretch" Row>
+            <MudPaper Class="pa-3 mud-theme-dark">Item 1</MudPaper>
+            <MudPaper Class="pa-3 mud-theme-dark">Delete</MudPaper>
+        </MudStack>
+    </MudPaper>
+}
 
 @code {
+
+    StretchItems stretch = StretchItems.Start;
+
+    List<ToDo> toDoItems = new List<ToDo>();
+
     protected override async Task OnInitializedAsync()
     {
         try
         {
-            var todos = await TaskService.GetToDos();
+            toDoItems = await TaskService.GetToDos();
         }
         catch (Exception ex)
         {
-            Snackbar.Add(ex.Message, Severity.Error);
+            //Snackbar.Add(ex.Message, Severity.Error);
         }
     }
 }
+
+@*TODO:
+    - add test data to DB.
+    -pull test data, and display in UI.
+
+    -add create task functionality.
+    -test if snackbar can close
+*@

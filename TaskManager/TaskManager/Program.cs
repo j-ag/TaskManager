@@ -3,6 +3,11 @@ using TaskManager.Components;
 using MudBlazor.Services;
 using ToDoData.Models;
 using Microsoft.EntityFrameworkCore;
+using MudBlazor;
+using TaskManager.Services.Interfaces;
+using TaskManager.Services;
+using TaskManager.Repositories;
+using TaskManager.Repositories.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,9 +15,24 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
 
+// TODO: Test if injection is working.
+builder.Services.AddScoped<IToDoRepository, ToDoRepository>();
+builder.Services.AddScoped<IToDoService, ToDoService>();
+
 builder.Services.AddControllers();
 
-builder.Services.AddMudServices();
+builder.Services.AddMudServices(config =>
+{
+    config.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.BottomLeft;
+
+    config.SnackbarConfiguration.PreventDuplicates = false;
+    config.SnackbarConfiguration.NewestOnTop = false;
+    config.SnackbarConfiguration.ShowCloseIcon = true;
+    config.SnackbarConfiguration.VisibleStateDuration = 10000;
+    config.SnackbarConfiguration.HideTransitionDuration = 500;
+    config.SnackbarConfiguration.ShowTransitionDuration = 500;
+    config.SnackbarConfiguration.SnackbarVariant = Variant.Filled;
+});
 
 builder.Services.AddDbContext<ToDoDBContext>(options =>
     options.UseSqlite("Data Source=TaskDB.db"));

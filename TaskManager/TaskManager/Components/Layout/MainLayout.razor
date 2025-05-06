@@ -2,10 +2,12 @@
 @inherits LayoutComponentBase
 
 <MudThemeProvider />
+<MudPopoverProvider />
+<MudDialogProvider />
 <MudSnackbarProvider />
 
 <MudLayout>
-    <MudAppBar Elevation="1">
+    <MudAppBar Elevation="1" Class="mud-theme-dark">
         <MudText Typo="Typo.h5" Class="ml-3">Task Manager</MudText>
         <MudSpacer />
         <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" />
