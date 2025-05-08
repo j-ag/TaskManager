@@ -4,19 +4,21 @@
 @inject ISnackbar Snackbar
 
 @foreach(var item in toDoItems)
-{ 
-    <MudPaper Outlined Class="border-dashed">
-        <MudStack StretchItems="@stretch" Row>
-            <MudPaper Class="pa-3 mud-theme-dark">Item 1</MudPaper>
-            <MudPaper Class="pa-3 mud-theme-dark">Delete</MudPaper>
+{
+    <MudPaper Class="justify-center" Elevation="0">
+        <MudStack Row>
+            <MudPaper Class="pa-3 mud-theme-dark">@item.ToDoText</MudPaper>
+            <MudPaper Class="pa-3 mud-theme-dark">@item.ToDoDate</MudPaper>
+            <MudButton Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Delete" Color="Color.Error">Delete</MudButton>
         </MudStack>
     </MudPaper>
 }
 
+<MudButton Class="justify-center" Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.Add" Style="background-color: green; color: white; width: 200px; height: 60px;">
+    Create Task
+</MudButton>
+
 @code {
-
-    StretchItems stretch = StretchItems.Start;
-
     List<ToDo> toDoItems = new List<ToDo>();
 
     protected override async Task OnInitializedAsync()
