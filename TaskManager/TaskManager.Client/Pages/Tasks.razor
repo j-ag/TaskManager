@@ -1,12 +1,14 @@
-﻿@using TaskManager.Client.DTOs
+﻿@page "/"
+
+@using TaskManager.Client.DTOs
 @using TaskService
 @using MudBlazor
 @inject ISnackbar Snackbar
 
 @foreach(var item in toDoItems)
 {
-    <MudPaper Class="justify-center" Elevation="0">
-        <MudStack Row>
+    <MudPaper Elevation="0">
+        <MudStack Class="d-flex justify-center" Row>
             <MudPaper Class="pa-3 mud-theme-dark">@item.ToDoText</MudPaper>
             <MudPaper Class="pa-3 mud-theme-dark">@item.ToDoDate</MudPaper>
             <MudButton Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Delete" Color="Color.Error">Delete</MudButton>
@@ -14,7 +16,7 @@
     </MudPaper>
 }
 
-<MudButton Class="justify-center" Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.Add" Style="background-color: green; color: white; width: 200px; height: 60px;">
+<MudButton onclick="CreateTask" Class="justify-center" Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.Add" Style="background-color: green; color: white; width: 200px; height: 60px;">
     Create Task
 </MudButton>
 
@@ -31,5 +33,10 @@
         {
             //Snackbar.Add(ex.Message, Severity.Error);
         }
+    }
+
+    public void CreateTask(MouseEventArgs args)
+    {
+        throw new NotImplementedException();
     }
 }
